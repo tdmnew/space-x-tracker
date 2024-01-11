@@ -1,4 +1,4 @@
-import API from '@core/constants';
+import { API } from '@core/constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const { SPACEX } = API;

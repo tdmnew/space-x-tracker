@@ -15,6 +15,11 @@ export type Mission = {
   wikipedia: string;
 };
 
+export type FilteredMission = { id: string; name: string } & Pick<
+  Mission,
+  'description' | 'payload_ids'
+>;
+
 export type History = {
   details: string;
   event_date_unix: number;
@@ -24,6 +29,11 @@ export type History = {
   links: Links;
   title: string;
 };
+
+export type FilteredHistory = {
+  article: string;
+  date: string;
+} & Pick<History, 'id' | 'title' | 'details'>;
 
 export type Payload = {
   customers: string[];
@@ -36,3 +46,8 @@ export type Payload = {
   payload_mass_lbs: number;
   payload_type: string;
 };
+
+export type FilteredPayload = { id: string; type: string } & Pick<
+  Payload,
+  'manufacturer' | 'nationality' | 'orbit'
+>;

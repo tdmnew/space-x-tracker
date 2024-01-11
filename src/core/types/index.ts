@@ -1,7 +1,14 @@
 import store from '@store/index';
 
 /* API */
-export type { History, Mission, Payload } from './api/spacex';
+export type {
+  History,
+  FilteredHistory,
+  Mission,
+  FilteredMission,
+  Payload,
+  FilteredPayload
+} from './api/spacex';
 
 /* Store */
 export type RootState = ReturnType<typeof store.getState>;

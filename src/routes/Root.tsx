@@ -10,7 +10,7 @@ const Root: FC = () => {
     <div className="text-white bg-slate-900 h-screen">
       <Header />
 
-      <div className="p-4 bg-inherit">
+      <div className="bg-inherit p-4 ">
         <Outlet />
       </div>
     </div>

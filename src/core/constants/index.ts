@@ -1,5 +1,1 @@
-import API from './api';
-
-export default {
-  ...API
-};
+export { API } from './api';

@@ -1,4 +1,4 @@
-export default {
+export const API = {
   SPACEX: {
     BASE_URL: 'https://api.spacexdata.com/v3',
     MISSIONS: '/missions',

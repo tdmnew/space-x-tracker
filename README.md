@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Space X Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+- Clone this repositroy and run `npm install` to install dependencies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Scripts
 
-## Expanding the ESLint configuration
+- `npm run dev` - starts the app in development mode
+- `npm run build` - builds the app for production
+- `npm run lint` - runs eslint
+- `npm run lint:fix` - runs eslint and fixes errors
+- `npm run format` - runs prettier
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Code Structure
 
-- Configure the top-level `parserOptions` property like this:
+The `src/*` folder is structured as:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+src/
+├── components/
+│   ├── common/ (common components - buttons, inputs, etc)
+│   │   ├── <component_name>/
+│   ├── layout/ (layout components - header, footer, etc)
+│   │   ├── <component_name>/
+├── core/
+│   ├── constants/
+│   ├── types/
+├── routes/ (page components per route used by react-router-dom)
+├── store/ (redux store properties)
+│   ├── api/ (the api service layer)
+│   │   ├── <endpoint_name>/ (the endpoint, with generated hooks for consuming data)
+    )
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- The api layer is split based on the resource base url (e.g. 'spacex'), and within this folder it is split based on the endpoint (e.g. '/history'). The `injectEndpoints()` function includes a query builder for fetching based on a resource ('one', 'all') and transforming the response. The consumer is able to access data from each endpoint using the hooks that are generated with RTK Query.
+- Path aliases are used to avoid long relative imports, and to make the code more readable ('@core/**/\*', '@components/**/\*', etc).
+
+## Future Scope (Ommitted due to time constraints)
+
+- Zod could be used for runtime type checking, which would be especially useful for the API layer.
+- Components should ensure good colocation/grouping of similar elements, and should be split into smaller components if they become too large. A good heuristic being setting a max-lines limit of ~150, at which point elements could be split into smaller presentational components and nested within this directory.
+- Tests should be added for the api layer, and for reducer actions using RTL and Redux Mock Store. For good colocation, these would ideally be stored in the same folder with the directory `__tests__` and be configured to run in `package.json` with Jest.
+- Given this repository is very small, it wasn't possible to expand on a 'vision' for how tailwindCSS would be managed in a design system. Either in the `Root.css` file or a separated `/styles` folder design element style properties could be grouped (e.g. `btn btn-blue-500`) or the `tailwind.config.js` could be expanded with theming similar to [https://tailwindcss.com/docs/theme].

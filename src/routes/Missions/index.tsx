@@ -1,27 +1,23 @@
 import type { FC } from 'react';
-import { RotatingLines as LoadingSpinner } from 'react-loader-spinner';
 
 import { useGetAllMissionsQuery } from '@api/spacex/missions';
+import Error from '@components/common/Error';
+import LoadingSpinner from '@components/common/LoadingSpinner';
 
 const Missions: FC = () => {
-  const { data, isLoading } = useGetAllMissionsQuery();
+  const { data, error, isLoading } = useGetAllMissionsQuery();
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center">
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  if (isLoading) <LoadingSpinner />;
+  if (error) <Error />;
 
   return (
     <div className="flex flex-col justify-center h-full">
       <h2 className="text-2xl underline pb-4">Missions</h2>
 
       <div className="flex flex-col gap-y-4">
-        {data?.map(({ mission_id, mission_name, description, payload_ids }) => (
-          <div key={mission_id} className="border-[1px] p-2">
-            <h3 className="pb-2">{mission_name}:</h3>
+        {data?.map(({ id, name, description, payload_ids }) => (
+          <div key={id} className="border-[1px] p-2">
+            <h3 className="pb-2">{name}:</h3>
             <p>{description}</p>
 
             {payload_ids && (
