@@ -37,7 +37,7 @@ src/
 - Path aliases are used to avoid long relative imports, and to make the code more readable (`@core/**/\*`, `@components/**/\*`, etc).
 - Components should ensure good colocation/grouping of similar elements, and should be split into smaller components if they become too large. A good rule of thumb being when the length exceeds ~150 lines, at which point elements could be split into smaller presentational components and nested within this directory.
 
-## Future Scope (Ommitted due to time constraints)
+## Future Scope (Omitted due to time constraints)
 
 - Zod could be used for runtime type checking, which would be especially useful for the API layer.
 - Tests should be added for the api layer using Jest and Redux Mock Store. For good colocation, these would ideally be stored in the same folder with the directory `__tests__` and be configured to run in `package.json` with Jest.
