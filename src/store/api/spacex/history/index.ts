@@ -1,5 +1,5 @@
 import { API } from '@core/constants';
-import type { FilteredHistory,History } from '@core/types';
+import type { FilteredHistory, History } from '@core/types';
 
 import { spacexApi } from '../index';
 

@@ -1,5 +1,5 @@
 import { API } from '@core/constants';
-import type { FilteredMission,Mission } from '@core/types';
+import type { FilteredMission, Mission } from '@core/types';
 
 import { spacexApi } from '../index';
 
