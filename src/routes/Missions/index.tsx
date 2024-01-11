@@ -7,8 +7,8 @@ import LoadingSpinner from '@components/common/LoadingSpinner';
 const Missions: FC = () => {
   const { data, error, isLoading } = useGetAllMissionsQuery();
 
-  if (isLoading) <LoadingSpinner />;
-  if (error) <Error />;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <Error />;
 
   return (
     <div className="flex flex-col justify-center h-full">

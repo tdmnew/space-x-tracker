@@ -9,8 +9,8 @@ const Payload: FC = () => {
   const { payloadId } = useParams();
   const { data, error, isLoading } = useGetOnePayloadQuery(payloadId);
 
-  if (isLoading) <LoadingSpinner />;
-  if (error) <Error />;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <Error />;
 
   return (
     <div className="flex flex-col justify-center h-full">

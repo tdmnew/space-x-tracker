@@ -8,8 +8,8 @@ import LoadingSpinner from '@components/common/LoadingSpinner';
 const History: FC = () => {
   const { data, error, isLoading } = useGetAllHistoryQuery();
 
-  if (isLoading) <LoadingSpinner />;
-  if (error) <Error />;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <Error />;
 
   return (
     <div className="flex flex-col justify-center h-full">
