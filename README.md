@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-- Clone this repositroy and run `npm install` to install dependencies.
+- Clone this repository and run `npm install` to install dependencies.
 
 ## Scripts
 
@@ -33,12 +33,12 @@ src/
     )
 ```
 
-- The api layer is split based on the resource base url (e.g. 'spacex'), and within this folder it is split based on the endpoint (e.g. '/history'). The `injectEndpoints()` function includes a query builder for fetching based on a resource ('one', 'all') and transforming the response. The consumer is able to access data from each endpoint using the hooks that are generated with RTK Query.
+- The api service layer is split based on the resource base url (e.g. 'spacex'), and within this folder it is split based on the endpoint (e.g. '/history'). The `injectEndpoints()` function includes a query builder for fetching based on a resource ('one', 'all') and transforming the response. The consumer is able to access data from each endpoint using the hooks that are generated with RTK Query.
 - Path aliases are used to avoid long relative imports, and to make the code more readable ('@core/**/\*', '@components/**/\*', etc).
+- Components should ensure good colocation/grouping of similar elements, and should be split into smaller components if they become too large. A good rule of thumb being when the length exceeds ~150 lines, at which point elements could be split into smaller presentational components and nested within this directory.
 
 ## Future Scope (Ommitted due to time constraints)
 
 - Zod could be used for runtime type checking, which would be especially useful for the API layer.
-- Components should ensure good colocation/grouping of similar elements, and should be split into smaller components if they become too large. A good heuristic being setting a max-lines limit of ~150, at which point elements could be split into smaller presentational components and nested within this directory.
-- Tests should be added for the api layer, and for reducer actions using RTL and Redux Mock Store. For good colocation, these would ideally be stored in the same folder with the directory `__tests__` and be configured to run in `package.json` with Jest.
-- Given this repository is very small, it wasn't possible to expand on a 'vision' for how tailwindCSS would be managed in a design system. Either in the `Root.css` file or a separated `/styles` folder design element style properties could be grouped (e.g. `btn btn-blue-500`) or the `tailwind.config.js` could be expanded with theming similar to [https://tailwindcss.com/docs/theme].
+- Tests should be added for the api layer using Jest and Redux Mock Store. For good colocation, these would ideally be stored in the same folder with the directory `__tests__` and be configured to run in `package.json` with Jest.
+- Given this repository is very small, it wasn't possible to expand on a 'vision' for how tailwindCSS would be managed in a design system. Either in the `Root.css` file or a separate `/styles` folder design element style properties could be grouped (e.g. `btn btn-blue-500`) or the `tailwind.config.js` could be expanded with theming similar to [https://tailwindcss.com/docs/theme].
